@@ -1,0 +1,6 @@
+Login: Radanit
+Name: Dima
+Surname: Safonchyk
+Email: safonchyk@ukr.net
+Phone Number: +380506528438
+Password: Dima2004
