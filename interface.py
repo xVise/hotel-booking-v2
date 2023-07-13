@@ -5,12 +5,15 @@ def book_hotel():
     hotel_name = entry_hotel_name.get()
     check_in = entry_check_in.get()
     check_out = entry_check_out.get()
-    price_per_day = entry_price.get()
+
+    # Get the selected room type and its price
+    selected_room_type = room_type_options.get()
+    price_per_day = room_prices[selected_room_type]
 
     # Perform the booking logic here
-    
+
     # Display a confirmation message
-    confirmation_message = f"Hotel: {hotel_name}\nCheck-in: {check_in}\nCheck-out: {check_out}\nPrice per day: {price_per_day}"
+    confirmation_message = f"Hotel: {hotel_name}\nCheck-in: {check_in}\nCheck-out: {check_out}\nRoom Type: {selected_room_type}\nPrice per day: {price_per_day}"
     lbl_confirmation.config(text=confirmation_message)
 
 
@@ -36,11 +39,23 @@ lbl_check_out.pack()
 entry_check_out = tk.Entry(window)
 entry_check_out.pack()
 
-# Price per Day
-lbl_price = tk.Label(window, text="Price per Day:")
-lbl_price.pack()
-entry_price = tk.Entry(window)
-entry_price.pack()
+# Room Type Selection
+lbl_room_type = tk.Label(window, text="Select Room Type:")
+lbl_room_type.pack()
+
+room_type_options = tk.StringVar(window)
+room_type_options.set("Standard")  # Set the default room type
+
+room_prices = {
+    "Standard": 100,
+    "Deluxe": 150,
+    "Suite": 200,
+    "Executive": 250,
+    "Luxury": 300
+}
+
+room_type_dropdown = tk.OptionMenu(window, room_type_options, *room_prices.keys())
+room_type_dropdown.pack()
 
 # Book Button
 btn_book = tk.Button(window, text="Book", command=book_hotel)
