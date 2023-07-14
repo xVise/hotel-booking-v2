@@ -1,0 +1,12 @@
+Login: Radanit
+Name: Dima
+Surname: Safonchyk
+Email: safonchyk@ukr.net
+Phone Number: +380506528438
+Password: Dima2004
+Login: Pank
+Name: Anton
+Surname: Voloshyn
+Email: Volosin769@gmail.com
+Phone Number: +380980757450
+Password: Pank228
