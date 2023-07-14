@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 import subprocess
+import os
 
 class Regist:
     def __init__(self):
@@ -102,6 +103,7 @@ def login(login_entry, password_entry):
 
                 if user.login == login and user.password == password:
                     messagebox.showinfo("Login Successful", f"Name: {user.name}\nSurname: {user.surname}\nEmail: {user.email}\nPhone Number: {user.phone_number}")
+                    os.environ["LOGIN"] = login
                     subprocess.Popen(["python", "menu.py"])
                     return
 
