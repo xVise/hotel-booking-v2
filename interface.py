@@ -1,5 +1,12 @@
 import tkinter as tk
 
+def create_label_entry(window, label_text):
+    label = tk.Label(window, text=label_text)
+    label.pack()
+    entry = tk.Entry(window)
+    entry.pack()
+    return entry
+
 # Function to book the hotel
 def book_hotel():
     hotel_name = entry_hotel_name.get()
@@ -10,9 +17,6 @@ def book_hotel():
     selected_room_type = room_type_options.get()
     price_per_day = room_prices[selected_room_type]
 
-    # Perform the booking logic here
-
-    # Display a confirmation message
     confirmation_message = f"Hotel: {hotel_name}\nCheck-in: {check_in}\nCheck-out: {check_out}\nRoom Type: {selected_room_type}\nPrice per day: {price_per_day}"
     lbl_confirmation.config(text=confirmation_message)
 
@@ -21,23 +25,10 @@ def book_hotel():
 window = tk.Tk()
 window.title("Hotel Booking Service")
 
-# Hotel Name
-lbl_hotel_name = tk.Label(window, text="Hotel Name:")
-lbl_hotel_name.pack()
-entry_hotel_name = tk.Entry(window)
-entry_hotel_name.pack()
 
-# Check-in Date
-lbl_check_in = tk.Label(window, text="Check-in Date:")
-lbl_check_in.pack()
-entry_check_in = tk.Entry(window)
-entry_check_in.pack()
-
-# Check-out Date
-lbl_check_out = tk.Label(window, text="Check-out Date:")
-lbl_check_out.pack()
-entry_check_out = tk.Entry(window)
-entry_check_out.pack()
+entry_hotel_name = create_label_entry(window, "Hotel Name:")
+entry_check_in = create_label_entry(window, "Check-in Date:")
+entry_check_out = create_label_entry(window, "Check-out Date:")
 
 # Room Type Selection
 lbl_room_type = tk.Label(window, text="Select Room Type:")
@@ -65,5 +56,5 @@ btn_book.pack()
 lbl_confirmation = tk.Label(window)
 lbl_confirmation.pack()
 
-# Run the main event loop
+
 window.mainloop()
