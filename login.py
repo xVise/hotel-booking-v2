@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+import subprocess
 
 class Regist:
     def __init__(self):
@@ -84,7 +85,7 @@ def register(user, name_entry, surname_entry, email_entry, phone_entry, login_en
     else:
         messagebox.showerror("Password Mismatch", "Passwords do not match. Please try again.")
 
-def login():
+def login(login_entry, password_entry):
     login = login_entry.get()
     password = password_entry.get()
 
@@ -101,12 +102,13 @@ def login():
 
                 if user.login == login and user.password == password:
                     messagebox.showinfo("Login Successful", f"Name: {user.name}\nSurname: {user.surname}\nEmail: {user.email}\nPhone Number: {user.phone_number}")
+                    subprocess.Popen(["python", "menu.py"])
                     return
 
         messagebox.showerror("Login Failed", "Invalid login or password.")
 
 def main():
-    global login_entry, password_entry, user
+    global user
     window = tk.Tk()
     window.title("Login/Register")
     window.geometry("300x300")
@@ -120,7 +122,7 @@ def main():
     password_entry = tk.Entry(window, show="*")  # Added password entry field
     password_entry.pack()
 
-    login_button = tk.Button(window, text="Login", command=login)
+    login_button = tk.Button(window, text="Login", command=lambda: login(login_entry, password_entry))
     login_button.pack()
 
     registration_button = tk.Button(window, text="Registration", command=lambda: show_registration_window(window))
