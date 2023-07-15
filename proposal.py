@@ -27,35 +27,34 @@ window = tk.Tk()
 window.title("Hotel Information")
 window.geometry("400x350")
 
-# Price input field
-price_label = tk.Label(window, text="Price:")
-price_label.pack()
-price_entry = tk.Entry(window)
-price_entry.pack()
 
-# Location input field
-location_label = tk.Label(window, text="Location:")
-location_label.pack()
-location_entry = tk.Entry(window)
-location_entry.pack()
+fields = [
+    ("Price:", tk.Entry(window)),
+    ("Location:", tk.Entry(window)),
+    ("Name:", tk.Entry(window)),
+    ("Description:", tk.Text(window, height=5))
+]
 
-# Name input field
-name_label = tk.Label(window, text="Name:")
-name_label.pack()
-name_entry = tk.Entry(window)
-name_entry.pack()
 
-# Description input field
-description_label = tk.Label(window, text="Description:")
-description_label.pack()
-description_text = tk.Text(window, height=5)
-description_text.pack()
+for label, input_field in fields:
+    label_widget = tk.Label(window, text=label)
+    label_widget.pack()
+    input_field.pack()
 
-# Save button
+    if label == "Price:":
+        price_entry = input_field
+    elif label == "Location:":
+        location_entry = input_field
+    elif label == "Name:":
+        name_entry = input_field
+    elif label == "Description:":
+        description_text = input_field
+
+
 save_button = tk.Button(window, text="Save", command=save_hotel_info)
 save_button.pack()
 
-# Success message label
+
 success_label = tk.Label(window, text="")
 success_label.pack()
 
