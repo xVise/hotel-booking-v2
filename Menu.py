@@ -19,6 +19,7 @@ class Hotel:
         self.description = description
 
 def select_hotel():
+    subprocess.Popen(["python", "interface.py"])
     pass
 
 def create_hotel_info():
@@ -26,6 +27,13 @@ def create_hotel_info():
 
 def search_hotel():
     subprocess.Popen(["python", "funct1.py"])
+
+def all_hotels():
+    subprocess.Popen(["python", "GetInfo.py"])
+
+def filter_hotels():
+    subprocess.Popen(["python", "Filter.py"])
+
     
 
 def open_account_form(root):
@@ -66,23 +74,30 @@ def main():
                     break
 
     root = tk.Tk()
-
+    root.title("Main menu")
+    root.geometry("800x500")
     select_hotel_button = tk.Button(root, text="Select Hotel", command=select_hotel)
-    select_hotel_button.pack(side='left')
+    select_hotel_button.pack(side='top')
 
     create_hotel_info_button = tk.Button(root, text="Create Hotel Info", command=create_hotel_info)
-    create_hotel_info_button.pack(side='left')
+    create_hotel_info_button.pack(side='top')
 
     search_hotel_button = tk.Button(root, text="Search Hotel", command=search_hotel)
-    search_hotel_button.pack(side='left')
+    search_hotel_button.pack(side='top')
+
+    search_hotel_button = tk.Button(root, text="Filter Hotels", command=filter_hotels)
+    search_hotel_button.pack(side='top')
+
+    search_hotel_button = tk.Button(root, text="All Hotels", command=all_hotels)
+    search_hotel_button.pack(side='top')
 
     hotels = load_hotels()
     for hotel in hotels:
         hotel_label = tk.Label(root, text=f"Name: {hotel.name}\nLocation: {hotel.location}\nPrice: {hotel.price}")
-        hotel_label.pack(side='right')
+        hotel_label.pack(side='bottom')
 
     open_account_form_button = tk.Button(root, text="Open Account Form", command=lambda: open_account_form(root))
-    open_account_form_button.pack(side='left')
+    open_account_form_button.pack(side='top')
 
     root.mainloop()
 
