@@ -20,16 +20,29 @@ def load_hotels():
                 hotel_info = ""
             else:
                 hotel_info += line
-    return hotels[:5]  # Return the first 5 hotels
+    return hotels
 
 def main():
     root = tk.Tk()
-    root.geometry("250x300")  # Set the size of the window
+    root.title("All Hotelts")
+    root.geometry("1200x700")  # Set the size of the window
 
     hotels = load_hotels()
-    for hotel in hotels:
+
+    row_index = 0
+    column_index = 0
+
+    for i, hotel in enumerate(hotels):
         hotel_label = tk.Label(root, text=f"Name: {hotel.name}\nLocation: {hotel.location}\nPrice: {hotel.price}")
-        hotel_label.pack(side='top')
+
+        # Place the hotel label using grid
+        hotel_label.grid(row=row_index, column=column_index, padx=10, pady=10)
+
+        if i % 5 == 4:
+            row_index += 1
+            column_index = 0  # Start from the first column
+        else:
+            column_index += 1  # Move to the next column
 
     root.mainloop()
 
