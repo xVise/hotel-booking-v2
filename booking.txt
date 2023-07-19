@@ -1,0 +1,5 @@
+Hotel: qwe
+Check-in: 123
+Check-out: 312
+Room Type: Deluxe
+Price per day: 150
